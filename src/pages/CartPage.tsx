@@ -41,13 +41,6 @@ const CartPage: React.FC = () => {
     addItemToCart 
   } = useCart();
 
-  const handleRemoveItem = async (itemId: number) => {
-    try {
-      await removeFromCart(itemId).unwrap();
-    } catch (error) {
-      console.error('Ошибка удаления из корзины:', error);
-    }
-  };
 
   const handleClearCart = async () => {
     if (window.confirm('Очистить всю корзину?')) {
