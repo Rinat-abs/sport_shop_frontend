@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <CardMedia
         component="img"
         height="200"
-        image={NoImage}
+        image={product.image_url || NoImage}
         alt={product.name}
         onClick={() => navigate(`/product/${product.id}`)}
         style={{ cursor: 'pointer', objectFit: 'cover' }}

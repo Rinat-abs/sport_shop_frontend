@@ -26,6 +26,7 @@ import {
 } from '@mui/icons-material';
 import { useCart } from '../hooks/useCart';
 import { useNavigate } from 'react-router-dom';
+import NoImage from '../assets/no-image.jpg'
 
 const CartPage: React.FC = () => {
   const navigate = useNavigate();
@@ -145,7 +146,7 @@ const CartPage: React.FC = () => {
                     <TableCell>
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <img
-                          src={`https://via.placeholder.com/50x50?text=${encodeURIComponent(item.product.name)}`}
+                          src={item.product.image_url || NoImage}
                           alt={item.product.name}
                           style={{ width: 50, height: 50, objectFit: 'cover', marginRight: 16, borderRadius: 4 }}
                         />
