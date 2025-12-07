@@ -39,6 +39,7 @@ const AdminPage: React.FC = () => {
       setValue('price', product.price);
       setValue('category', product.category);
       setValue('quantity', product.quantity);
+      setValue('image_url', product.image_url);
     } else {
       setEditingProduct(null);
       reset();
@@ -238,6 +239,22 @@ const AdminPage: React.FC = () => {
                   {...register('category', { 
                     required: 'Категория обязательна',
                     minLength: { value: 2, message: 'Минимум 2 символа' }
+                  })}
+                />
+              </Grid>
+              <Grid size={{xs: 12 }}>
+                <TextField
+                  fullWidth
+                  label="URL картинки товара"
+                  type="url"
+                  error={!!errors.image_url}
+                  helperText={errors.image_url?.message}
+                  {...register('image_url', {
+                    required: 'URL картинки обязательно',
+                    pattern: {
+                      value: /^https?:\/\/.+/,
+                      message: 'Введите корректный URL (начинается с http:// или https://)'
+                    }
                   })}
                 />
               </Grid>
