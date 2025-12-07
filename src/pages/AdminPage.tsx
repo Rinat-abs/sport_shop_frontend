@@ -11,6 +11,7 @@ import {
   Grid,
   Card,
   CardContent,
+  CardMedia,
   CardActions,
   IconButton,
   CircularProgress,
@@ -23,6 +24,7 @@ import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/ico
 import { useForm } from 'react-hook-form';
 import { useProducts } from '../hooks/useProducts';
 import type { Product, CreateProductRequest } from '../types';
+import NoImage from '../assets/no-image.jpg';
 
 const AdminPage: React.FC = () => {
   const { products, isLoading, error, createProduct, updateProduct, deleteProduct, isCreating, isUpdating, isDeleting } = useProducts();
@@ -121,6 +123,13 @@ const AdminPage: React.FC = () => {
           {products.map((product) => (
             <Grid key={product.id} size={{ xs: 12, sm:6, md: 4, lg: 3 }}>
               <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={product.image_url || NoImage}
+                  alt={product.name}
+                  sx={{ objectFit: 'cover' }}
+                />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
                     {product.name}
