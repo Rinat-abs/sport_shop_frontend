@@ -17,6 +17,7 @@ import {
 import { ArrowBack } from '@mui/icons-material';
 import { useProduct } from '../hooks/useProducts';
 import { useCart } from '../hooks/useCart';
+import NoImage from '../assets/no-image.jpg';
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -95,7 +96,7 @@ const ProductDetailPage: React.FC = () => {
             <CardMedia
               component="img"
               height="400"
-              image={`https://via.placeholder.com/500x400?text=${encodeURIComponent(product.name)}`}
+              image={product.image_url || NoImage}
               alt={product.name}
               sx={{ objectFit: 'cover' }}
             />
